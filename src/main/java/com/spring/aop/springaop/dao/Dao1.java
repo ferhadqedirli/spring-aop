@@ -1,4 +1,4 @@
-package com.spring.aop.springaop;
+package com.spring.aop.springaop.dao;
 
 import org.springframework.stereotype.Repository;
 
