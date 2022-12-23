@@ -14,32 +14,34 @@ public class UserAccessAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserAccessAspect.class);
 
     //Weaving & Weaver
-    @Before("execution(* com.spring.aop.springaop.business.*.*(..))")//pointcut
+    @Before("com.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")//pointcut
     public void before(JoinPoint joinPoint) {
         //advice
         LOGGER.info("Check for user");
         LOGGER.info("Allowed Execution for -> {}", joinPoint);
     }
 
-    @AfterReturning(value = "execution(* com.spring.aop.springaop.business.*.*(..))", returning = "result")//pointcut
+    @AfterReturning(value = "com.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()",
+            returning = "result")//pointcut
     public void afterReturning(JoinPoint joinPoint, Object result) {
         //advice
         LOGGER.info("{} returned with value {}", joinPoint, result);
     }
 
-    @AfterThrowing(value = "execution(* com.spring.aop.springaop.business.*.*(..))", throwing = "exception")//pointcut
+    @AfterThrowing(value = "com.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()",
+            throwing = "exception")//pointcut
     public void afterThrowing(JoinPoint joinPoint, Exception exception) {
         //advice
         LOGGER.info("{} throw exception {}", joinPoint, exception);
     }
 
-    @After(value = "execution(* com.spring.aop.springaop.business.*.*(..))")//pointcut
+    @After(value = "com.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")//pointcut
     public void afterThrowing(JoinPoint joinPoint) {
         //advice
         LOGGER.info("after execution of {}", joinPoint);
     }
 
-    @Around("execution(* com.spring.aop.springaop.business.*.*(..))")
+    @Around("com.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")
     public void around(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         joinPoint.proceed();
