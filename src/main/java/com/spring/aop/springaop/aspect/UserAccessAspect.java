@@ -14,7 +14,7 @@ public class UserAccessAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserAccessAspect.class);
 
     //Weaving & Weaver
-    @Before("com.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")//pointcut
+    @Before("com.spring.aop.springaop.aspect.CommonJoinPointConfig.trackTimeAnnotation()")//pointcut
     public void before(JoinPoint joinPoint) {
         //advice
         LOGGER.info("Check for user");
